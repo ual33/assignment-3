@@ -33,6 +33,7 @@ knn <- function(formula, data) {
 
   ll <- list(X = X, y = y)
   class(ll) <- "knn"
+  ll
 }
 ```
 
