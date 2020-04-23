@@ -1,0 +1,75 @@
+---
+title: "Question 1"
+---
+
+
+```{r, message = FALSE}
+library(tidyverse)
+```
+Consider the dataset `iris`, the function `knn` from the library `class` could perform k-th nearest neighour classification, e.g.,
+
+```{r}
+newdata <- tibble(
+  Sepal.Length = c(5.4, 4.6), 
+  Sepal.Width = c(3, 3.6), 
+  Petal.Length = c(4.5, 1),
+  Petal.Width = c(1.5, 0.2))
+
+class::knn(iris[, 1:4], newdata, iris$Species, k = 5)
+```
+
+However, this `knn` function doesn't have the familar interface as we see in `lm`, `glm` and other models. In most R models, to fit a model, we use `some_model(y ~ x, data = some_data)` and to predict, we use `predict(fit, newdata)`.
+
+We are going to writing our own `knn` model which has the same interface.
+
+##### (a) Write a function `knn` which takes a formula and a data. The function extracts the design matrix as `X` and the class labels as `y` and retruns a `list(X = X ,y = y)` with class name `knn`. (Normally, the fitting logic is in this function, but `knn` doesn't really have the training part.)
+
+Hint: check `model.matrix`, `model.response` and `model.frame` functions.
+
+
+```{r}
+knn <- function(formula, data) {
+  # YOUR answer here
+
+  ll <- list(X = X, y = y)
+  class(ll) <- "knn"
+}
+```
+
+```{r}
+fit <- knn(Species ~ ., data = iris)
+```
+
+```{r}
+stopifnot(hasName(fit, "X"))
+stopifnot(hasName(fit, "y"))
+stopifnot(identical(dim(fit$X), c(150, 4)))
+```
+
+
+##### (b) Write a function `predict.knn` which takes the `fit` object and `newdata` and predict this class. (Use your techniques learned in `purrr`!)
+
+For each row in the `newdata`
+
+  - calculate the euclidean distances between it and each row in `object$X`.
+  - keep only the smallest $k$ distances and the corresponding `object$Y`
+  - then use majority vote to choose the prediction for this new data
+
+The output of this function should be a vector of length `nrow(newdata)`.
+
+```{r}
+predict.knn <- function(object, newdata, k = 5, ...) {
+
+}
+```
+
+```{r}
+fit <- knn(Species ~ ., data = iris)
+pred <- predict(fit, newdata)
+stopifnot(length(pred) == nrow(newdata))
+```
+
+
+
+##### (c) Benchmark your `knn` + `predict` functions and the `class::knn` function to see which one is faster.
+

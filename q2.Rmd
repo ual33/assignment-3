@@ -1,0 +1,60 @@
+---
+title: "Question 2"
+---
+
+
+##### (a) Create an R6 class that represents a shuffled deck of 52 cards. You should be able to draw cards from the deck with `$draw(n)`, and return all cards to the deck and reshuffle with `$reshuffle()`. Use the following code to make a vector of cards.
+
+```r
+suit <- c("♠", "♥", "♦", "♣")
+value <- c("A", 2:10, "J", "Q", "K")
+cards <- paste0(rep(value, 4), suit)
+```
+
+```{r}
+Deck <- R6::R6Class(
+
+)
+```
+
+
+```{r}
+deck <- Deck$new()
+stopifnot(length(deck$draw(2)) == 2)
+```
+
+
+
+##### (b) Create an R6 Class that plays the following game between two players.
+
+
+- Each player has a deck of 52 cards
+- In each round
+    - each player draws `x` cards where `x` follows poisson distribution with mean 2
+    - if `x` is less than the number of remaining cards in the deck, resuffle the deck the draw `x` cards from the deck
+    - the player who has a larger sum wins the round (Ace = 1pt, 2 = 2pt,..., 9 = 9pt, 10 = 10pt and face cards = 10pt). If the sums are equal, no one wins this round
+- The game stops when one player wins 10 rounds.
+
+
+The R6 class `CardGame` which has the following methods: 
+
+- `$initialize(player1, player2)`: the names of player 1 and player 2
+- `$has_winner()`: TRUE/FALSE, check if any of the players wins 10 rounds
+- `$next_round()`: perform one round of game
+- `$winner()`:    return the name of the winner
+
+
+```{r}
+CardGarme <- R6::R6Class(
+
+)
+```
+
+
+```{r}
+game <- CardGarme$new("Player 1", "Player 2")
+while (!game$has_winner()) {
+    game$next_round()
+}
+cat("Winner is", game$winner(), "\n")
+```
