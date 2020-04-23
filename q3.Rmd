@@ -6,7 +6,7 @@ title: "Question 3"
 library(tidyverse)
 ```
 
-Consider the following function which select a column of a data
+Consider the function `slr` which returns the intercept and slope of a simple linear regression model.
 
 ```{r}
 # get a column of data
@@ -42,7 +42,7 @@ slr <- function(data) {
 }
 ```
 
-Despite of the inefficiency of some part of the code, this code is erroneous.
+Despite of the inefficiency of some part of the code, this code is erroneous and doesn't return the correct result.
 
 ```{r}
 df <- tibble(x = rnorm(10), y = rnorm(10))
@@ -50,7 +50,7 @@ identical(slr(df), coef(lm(y ~ x, data = df)))
 ```
 
 
-##### Could you find the culprit? Could you provide a targeted fix (minimized changes to the code)?
+##### Could you find the culprit and provide a targeted fix (minimized changes to the code)?
 
 Hint: you could use `browser()`, `debug`/`undebug` or `debugonce` to debug the functions.
 
