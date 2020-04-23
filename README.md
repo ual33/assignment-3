@@ -3,7 +3,7 @@
 
 Instructions
 
-1. Accept the assignment via the link: []
+1. Accept the assignment via the link: [https://classroom.github.com/a/kiNWKAsJ]
 1. A repo containing your username `xxxx-assignment-n-USERNAME` will be created.<br>
     Due to an ongoing technical reason, the assignment will be created at https://github.com/ucdavis-sta-assignments, not the class repo https://github.com/ucdavis-sta141c-sq-2020
 1. Create a new RStudio project with the repo containing your username  (do not clone the public repo `assignment-n`)
