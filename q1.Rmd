@@ -44,7 +44,7 @@ fit <- knn(Species ~ ., data = iris)
 ```{r}
 stopifnot(hasName(fit, "X"))
 stopifnot(hasName(fit, "y"))
-stopifnot(identical(dim(fit$X), c(150, 4)))
+stopifnot(all.equal(dim(fit$X), c(150, 4)))
 ```
 
 
