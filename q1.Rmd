@@ -18,9 +18,9 @@ newdata <- tibble(
 class::knn(iris[, 1:4], newdata, iris$Species, k = 5)
 ```
 
-However, this `knn` function doesn't have the familar interface as we see in `lm`, `glm` and other models. In most R models, to fit a model, we use `some_model(y ~ x, data = some_data)` and to predict, we use `predict(fit, newdata)`.
+However, this `knn` function doesn't have the familar interface that we see in `lm`, `glm` and other models. In most R models, to fit a model, we use `some_model(y ~ x, data = some_data)` and to predict, we use `predict(fit, newdata)`.
 
-We are going to writing our own `knn` model which has the same interface.
+We are going to writing our own `knn` model which has this interface.
 
 ##### (a) Write a function `knn` which takes a formula and a data. The function extracts the design matrix as `X` and the class labels as `y` and retruns a `list(X = X ,y = y)` with class name `knn`. (Normally, the fitting logic is in this function, but `knn` doesn't really have the training part.)
 

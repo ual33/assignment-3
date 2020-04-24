@@ -31,12 +31,12 @@ stopifnot(length(deck$draw(2)) == 2)
 - Each player has a deck of 52 cards
 - In each round
     - each player draws `x + 1` cards where `x` follows poisson distribution with mean 2
-    - if `x + 1` is less than the number of remaining cards in the deck, resuffle the deck the draw `x + 1` cards from the suffled deck
+    - if `x + 1` is less than the number of remaining cards in the deck, resuffle the deck and draw `x + 1` cards from the suffled deck
     - the player who has a larger sum wins the round (Ace = 1pt, 2 = 2pt,..., 9 = 9pt, 10 = 10pt and face cards = 10pt). If the sums are equal, no one wins this round
 - The game stops when one player wins 10 rounds.
 
 
-The R6 class `CardGame` which has the following methods: 
+The R6 class `CardGame` has the following methods: 
 
 - `$initialize(player1, player2)`: the names of player 1 and player 2
 - `$has_winner()`: TRUE/FALSE, check if any of the players wins 10 rounds
