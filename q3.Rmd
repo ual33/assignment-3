@@ -46,7 +46,10 @@ Despite of the inefficiency of some part of the code, this code is erroneous and
 
 ```{r}
 df <- tibble(x = rnorm(10), y = rnorm(10))
-all.equal(slr(df), coef(lm(y ~ x, data = df)))
+all.equal(
+  slr(df),
+  coef(lm(y ~ x, data = df)),
+  check.attributes = FALSE)
 ```
 
 
@@ -59,6 +62,11 @@ Hint: you could use `browser()`, `debug`/`undebug` or `debugonce` to debug the f
 
 
 ```{r}
-stopifnot(all.equal(slr(df), coef(lm(y ~ x, data = df))))
+stopifnot(
+  all.equal(
+    slr(df),
+    coef(lm(y ~ x, data = df)),
+    check.attributes = FALSE)
+)
 ```
 
