@@ -53,7 +53,7 @@ all.equal(
 ```
 
 
-##### Could you find the culprit and provide a targeted fix (minimized changes to the code)?
+##### Could you find the culprit and provide a targeted fix (minimal changes to the code)?
 
 Hint: you could use `browser()`, `debug`/`undebug` or `debugonce` to debug the functions.
 
