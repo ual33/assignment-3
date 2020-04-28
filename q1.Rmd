@@ -22,7 +22,7 @@ However, this `knn` function doesn't have the familar interface that we see in `
 
 We are going to writing our own `knn` model which has this interface.
 
-##### (a) Write a function `knn` which takes a formula and a data. The function extracts the design matrix as `X` and the class labels as `y` and retruns a `list(X = X ,y = y)` with class name `knn`. (Normally, the fitting logic is in this function, but `knn` doesn't really have the training part.)
+##### (a) Write a function `knn` which takes a formula and a data. The function extracts the design matrix as `X` and the class labels as `y` and retruns a `list(X = X ,y = y, formula = formula)` with class name `knn`. (Normally, the fitting logic is in this function, but `knn` doesn't really have the training part.)
 
 Hint: check `model.matrix`, `model.response` and `model.frame` functions.
 
